@@ -23,6 +23,7 @@ export const openRelativeFile = async (
 
   vscode.window
     .showTextDocument(doc, {
+      preview: viewColumn === 'side' ? true : false,
       viewColumn:
         viewColumn === 'side'
           ? vscode.ViewColumn.Beside
