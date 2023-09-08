@@ -3,6 +3,11 @@
   "displayName": "go-to-style",
   "description": "locates css classes in your project",
   "version": "0.0.1",
+  "publisher": "josh-warren",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshwrn/vscode-go-to-style/tree/main"
+  },
   "engines": {
     "vscode": "^1.81.0"
   },
