@@ -5,7 +5,10 @@ import { findImportPath } from './utils/folder'
 import { getVariableAtCursor } from './utils/getVariableAtCursor'
 import { openRelativeFile } from './utils/openRelativeFile'
 
-const setUp = (textEditor: vscode.TextEditor) => {
+const openStyle = (
+  textEditor: vscode.TextEditor,
+  viewColumn: 'side' | 'tab'
+) => {
   const editor = vscode.window.activeTextEditor
   if (!editor) {
     vscode.window.showErrorMessage('No active text editor found.')
@@ -25,31 +28,29 @@ const setUp = (textEditor: vscode.TextEditor) => {
     return
   }
 
-  return { importPath, property }
+  openRelativeFile(importPath, property, textEditor, viewColumn)
 }
 
 export function activate(context: vscode.ExtensionContext) {
   const openInSidePane = vscode.commands.registerTextEditorCommand(
     'go-to-style.side',
     (textEditor) => {
-      const base = setUp(textEditor)
-      if (!base) {
-        return
-      }
-      const { importPath, property } = base
-      openRelativeFile(importPath, property, textEditor, 'side')
+      openStyle(textEditor, 'side')
+    },
+    {
+      undoStopBefore: false,
+      undoStopAfter: false,
     }
   )
 
   const openInNewTab = vscode.commands.registerTextEditorCommand(
     'go-to-style.tab',
     (textEditor) => {
-      const base = setUp(textEditor)
-      if (!base) {
-        return
-      }
-      const { importPath, property } = base
-      openRelativeFile(importPath, property, textEditor, 'tab')
+      openStyle(textEditor, 'tab')
+    },
+    {
+      undoStopBefore: false,
+      undoStopAfter: false,
     }
   )
 

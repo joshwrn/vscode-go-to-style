@@ -34,8 +34,8 @@
     "keybindings": [
       {
         "command": "go-to-style.side",
-        "key": "ctrl+shift+z",
-        "mac": "cmd+shift+z",
+        "key": "ctrl+alt+a",
+        "mac": "cmd+alt+a",
         "when": "editorTextFocus"
       },
       {
