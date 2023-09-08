@@ -2,7 +2,7 @@
   "name": "go-to-style",
   "displayName": "go-to-style",
   "description": "locates css classes in your project",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "josh-warren",
   "repository": {
     "type": "git",
