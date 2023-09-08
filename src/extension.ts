@@ -17,14 +17,18 @@ const openStyle = (
 
   const variable = getVariableAtCursor(editor)
   const obj = variable.split('.')
+  if (obj.length < 2) {
+    vscode.window.showErrorMessage('No css module found.')
+    return
+  }
   const symbol = variable.split('.')[0]
   const property = variable.split('.')[obj.length - 1]
 
   const document = textEditor.document
   const importPath = findImportPath(document, symbol)
 
-  if (!importPath) {
-    vscode.window.showErrorMessage('No import path found.')
+  if (typeof importPath === 'object') {
+    vscode.window.showErrorMessage(importPath.error)
     return
   }
 

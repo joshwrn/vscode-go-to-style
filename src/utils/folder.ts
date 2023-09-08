@@ -12,9 +12,18 @@ export function findImportPath(
   let match
   while ((match = importPattern.exec(text)) !== null) {
     const importPath = match[1]
+    const regEx = /.*\.module\.(scss|css|sass)/
+    if (!regEx.test(importPath)) {
+      return {
+        error: 'This extension only works with CSS modules.',
+      }
+    }
     return importPath
   }
-  return null
+
+  return {
+    error: 'No import path found.',
+  }
 }
 
 export function countFoldersUp(filePath: string): number {
