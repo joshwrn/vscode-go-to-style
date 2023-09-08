@@ -4,7 +4,7 @@ A simple vscode extension to go to a specific css/scss class by clicking on it w
 
 ## Extension Link
 
-https://marketplace.visualstudio.com/manage/publishers/josh-warren/extensions/go-to-style/hub
+https://marketplace.visualstudio.com/items?itemName=josh-warren.go-to-style
 
 ## Tutorial
 
