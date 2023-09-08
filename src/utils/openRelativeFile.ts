@@ -34,7 +34,10 @@ export const openRelativeFile = async (
       const text = document.getText()
 
       // Find the position of the text within the document
-      const position = document.positionAt(text.indexOf(`.${property}`))
+      // regex only matches property without preceding whitespace
+      const regexp = new RegExp(`(?<![ \t])${'.' + property}`, 'gm')
+      const index = text.search(regexp)
+      const position = document.positionAt(index)
 
       let sel = new vscode.Selection(
         new vscode.Position(position.line, position.character),
