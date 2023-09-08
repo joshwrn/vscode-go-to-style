@@ -1,6 +1,6 @@
 # Go To Style README
 
-A simple vscode extension to go to a specific css/scss class by clicking on it where it's being used.
+A simple vscode extension to go to a specific css/scss class by clicking on the css module (`styles.wrapper`).
 
 ## Extension Link
 
