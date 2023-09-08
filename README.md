@@ -2,6 +2,10 @@
 
 A simple vscode extension to go to a specific css/scss class by clicking on it where it's being used.
 
+## Extension Link
+
+https://marketplace.visualstudio.com/manage/publishers/josh-warren/extensions/go-to-style/hub
+
 ## Tutorial
 
 1. Install the extension
