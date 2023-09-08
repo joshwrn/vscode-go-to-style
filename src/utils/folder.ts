@@ -1,4 +1,9 @@
-export function findImportPath(document: any, variableName: string) {
+import * as vscode from 'vscode'
+
+export function findImportPath(
+  document: vscode.TextDocument,
+  variableName: string
+) {
   const text = document.getText()
   const importPattern = new RegExp(
     `import .*\\b${variableName}\\b.*['"](.*)['"]`,
@@ -31,6 +36,7 @@ export const removeFoldersDown = (filePath: string, count: number): string => {
   return newSegments.join('/')
 }
 
+// removes all instances of '../' from the beginning of the string
 export const removeFoldersUp = (filePath: string): string => {
   const fp = filePath.replace(/^(\.\.\/)+/, '')
   return fp
