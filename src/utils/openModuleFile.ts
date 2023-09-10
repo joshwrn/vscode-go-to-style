@@ -3,7 +3,7 @@ import { countFoldersUp, removeFoldersDown, removeFoldersUp } from './folder'
 import path = require('path')
 import { findTypeScriptPath } from './findTypescriptPath'
 
-export const openRelativeFile = async (
+export const openModuleFile = async (
   relativePath: string,
   property: string,
   viewColumn: 'side' | 'tab'

@@ -3,7 +3,7 @@
 import * as vscode from 'vscode'
 import { findImportPath } from './utils/folder'
 import { getVariableAtCursor } from './utils/getVariableAtCursor'
-import { openRelativeFile } from './utils/openRelativeFile'
+import { openModuleFile } from './utils/openModuleFile'
 
 const openStyle = (
   textEditor: vscode.TextEditor,
@@ -32,7 +32,7 @@ const openStyle = (
     return
   }
 
-  openRelativeFile(importPath, property, viewColumn)
+  openModuleFile(importPath, property, viewColumn)
 }
 
 export function activate(context: vscode.ExtensionContext) {
