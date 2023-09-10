@@ -32,7 +32,7 @@ const openStyle = (
     return
   }
 
-  openRelativeFile(importPath, property, textEditor, viewColumn)
+  openRelativeFile(importPath, property, viewColumn)
 }
 
 export function activate(context: vscode.ExtensionContext) {

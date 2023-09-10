@@ -1,11 +1,11 @@
 import * as vscode from 'vscode'
 import { countFoldersUp, removeFoldersDown, removeFoldersUp } from './folder'
 import path = require('path')
+import { findTypeScriptPath } from './findTypescriptPath'
 
 export const openRelativeFile = async (
   relativePath: string,
   property: string,
-  editor: vscode.TextEditor,
   viewColumn: 'side' | 'tab'
 ) => {
   const documentPath = vscode.window.activeTextEditor?.document.uri.fsPath
@@ -13,11 +13,21 @@ export const openRelativeFile = async (
     vscode.window.showErrorMessage('No active text editor found.')
     return
   }
-  const foldersUp = countFoldersUp(relativePath)
-  const relativePathWithoutUp = removeFoldersUp(relativePath)
-  const baseFolder = removeFoldersDown(documentPath, foldersUp)
 
-  const absolutePath = path.join(baseFolder, relativePathWithoutUp)
+  let absolutePath: string | undefined
+
+  const tsPath = findTypeScriptPath(relativePath)
+
+  if (tsPath) {
+    const { newPath, workspaceFolder } = tsPath
+    const baseFolder = workspaceFolder.uri.fsPath
+    absolutePath = path.join(baseFolder, newPath)
+  } else {
+    const foldersUp = countFoldersUp(relativePath)
+    const relativePathWithoutUp = removeFoldersUp(relativePath)
+    const baseFolder = removeFoldersDown(documentPath, foldersUp)
+    absolutePath = path.join(baseFolder, relativePathWithoutUp)
+  }
 
   const doc = await vscode.workspace.openTextDocument(absolutePath)
 

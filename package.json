@@ -1,7 +1,7 @@
 {
   "name": "go-to-style",
   "displayName": "go-to-style",
-  "description": "locates css classes in your project",
+  "description": "locates css module classes in your project",
   "version": "0.5.0",
   "publisher": "josh-warren",
   "repository": {
