@@ -14,7 +14,7 @@ export const openModuleFile = async (
     return
   }
 
-  let absolutePath: string | undefined
+  let absolutePath: string
 
   const tsPath = findTypeScriptPath(relativePath)
 
@@ -31,45 +31,38 @@ export const openModuleFile = async (
 
   const doc = await vscode.workspace.openTextDocument(absolutePath)
 
-  vscode.window
-    .showTextDocument(doc, {
-      preview: viewColumn === 'side' ? true : false,
-      viewColumn:
-        viewColumn === 'side'
-          ? vscode.ViewColumn.Beside
-          : vscode.ViewColumn.Active,
-    })
-    .then((e) => {
-      const document = e.document
-      const text = document.getText()
+  const cssModuleFile = await vscode.window.showTextDocument(doc, {
+    preview: viewColumn === 'side' ? true : false,
+    viewColumn:
+      viewColumn === 'side'
+        ? vscode.ViewColumn.Beside
+        : vscode.ViewColumn.Active,
+  })
 
-      // Find the position of the text within the document
-      // regex only matches property without preceding whitespace
-      const regexp = new RegExp(`(?<![ \t])${'.' + property}`, 'gm')
-      const index = text.search(regexp)
-      const position = document.positionAt(index)
+  const document = cssModuleFile.document
+  const text = document.getText()
 
-      let sel = new vscode.Selection(
-        new vscode.Position(position.line, position.character),
-        new vscode.Position(
-          position.line,
-          position.character + property.length + 1
-        )
-      )
+  // Find the position of the text within the document
+  // regex only matches property without preceding whitespace
+  const regexp = new RegExp(`(?<![ \t])${'.' + property}`, 'gm')
+  const index = text.search(regexp)
+  const position = document.positionAt(index)
 
-      e.selection = sel
-      vscode.commands
-        .executeCommand('cursorMove', {
-          to: 'up',
-          by: 'line',
-          value: 100000,
-        })
-        .then(() =>
-          vscode.commands.executeCommand('cursorMove', {
-            to: 'down',
-            by: 'line',
-            value: position.line,
-          })
-        )
-    })
+  const sel = new vscode.Selection(
+    new vscode.Position(position.line, position.character),
+    new vscode.Position(position.line, position.character + property.length + 1)
+  )
+
+  cssModuleFile.selection = sel
+
+  await vscode.commands.executeCommand('cursorMove', {
+    to: 'up',
+    by: 'line',
+    value: 100000,
+  })
+  await vscode.commands.executeCommand('cursorMove', {
+    to: 'down',
+    by: 'line',
+    value: position.line,
+  })
 }
