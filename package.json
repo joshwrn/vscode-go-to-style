@@ -2,7 +2,7 @@
   "name": "go-to-style",
   "displayName": "go-to-style",
   "description": "locates css module classes in your project",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "publisher": "josh-warren",
   "icon": "icon.png",
   "repository": {
