@@ -4,7 +4,7 @@
   "description": "locates css module classes in your project",
   "version": "0.9.0",
   "publisher": "josh-warren",
-  "icon": "icon.png",
+  "icon": "./icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/joshwrn/vscode-go-to-style/tree/main"
