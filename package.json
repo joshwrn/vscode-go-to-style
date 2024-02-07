@@ -2,7 +2,7 @@
   "name": "go-to-style",
   "displayName": "go-to-style",
   "description": "locates css module classes in your project",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "publisher": "josh-warren",
   "icon": "./icon.png",
   "repository": {
@@ -24,12 +24,12 @@
       {
         "name": "go-to-style.side",
         "command": "go-to-style.side",
-        "title": "Go to Style (Side Pane)"
+        "title": "Go to Style (Pane)"
       },
       {
         "name": "go-to-style.tab",
         "command": "go-to-style.tab",
-        "title": "Go to Style (Tab)"
+        "title": "Go to Style (New Tab)"
       }
     ],
     "keybindings": [
@@ -51,12 +51,12 @@
         {
           "when": "resourceLangId == javascript || resourceLangId == typescript || resourceLangId == javascriptreact || resourceLangId == typescriptreact || resourceLangId == html",
           "command": "go-to-style.side",
-          "group": "YourGroup@1"
+          "group": "navigation@5"
         },
         {
           "when": "resourceLangId == javascript || resourceLangId == typescript || resourceLangId == javascriptreact || resourceLangId == typescriptreact || resourceLangId == html",
           "command": "go-to-style.tab",
-          "group": "YourGroup@1"
+          "group": "navigation@6"
         }
       ]
     }
