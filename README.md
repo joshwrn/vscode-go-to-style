@@ -12,6 +12,8 @@ https://marketplace.visualstudio.com/items?itemName=josh-warren.go-to-style
 2. Right click on the class name you want to go to.
 3. Click on `Go To Style`
 
+![Tutorial](https://i.imgur.com/4h7o9bC.gif)
+
 ## Example
 
 In the following example, clicking on `styles.title` will take you to the definition of the class in the `styles.module.scss` file.
